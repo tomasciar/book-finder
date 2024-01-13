@@ -1,4 +1,4 @@
 .venv
 .ipynb_checkpoints
 .env
-test.py
+__pycache__
