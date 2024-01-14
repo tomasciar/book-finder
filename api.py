@@ -37,7 +37,6 @@ def get_user_book_summaries(isbn_list):
         print(
             "Sorry, none of the user book summaries are valid. Please enter more books."
         )
-        quit
 
     return summaries, book_names
 
