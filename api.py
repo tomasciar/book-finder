@@ -61,7 +61,7 @@ def get_other_book_data(
 
     for _ in range(5):
         start_index = random.randint(0, total_items)
-        url = f"https://www.googleapis.com/books/v1/volumes?q=subject:{genre_to_read}+{genre}&startIndex={start_index}&maxResults={results}&key={API_KEY}"
+        url = f"https://www.googleapis.com/books/v1/volumes?q=subject:{genre_to_read}+{genre}&startIndex={start_index}&maxResults={results}&key={KEY}"
         response = requests.get(url)
         time.sleep(1)
 
