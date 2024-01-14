@@ -10,12 +10,14 @@ API_KEY = os.environ.get("API_KEY")
 
 
 # Retrieve book summaries from Google Books API
-def get_user_book_summaries(isbn_list):
+def get_user_book_summaries(isbn_list, user_key=None):
     summaries = []
     book_names = []
 
+    KEY = user_key or API_KEY
+
     for isbn in isbn_list:
-        url = f"https://www.googleapis.com/books/v1/volumes?q=isbn:{isbn}&key={API_KEY}"
+        url = f"https://www.googleapis.com/books/v1/volumes?q=isbn:{isbn}&key={KEY}"
         response = requests.get(url)
         time.sleep(1)
 
@@ -41,8 +43,12 @@ def get_user_book_summaries(isbn_list):
     return summaries, book_names
 
 
-def get_other_book_data(genre, genre_to_read, user_book_names, max_results=200):
-    url = f"https://www.googleapis.com/books/v1/volumes?q=subject:{genre_to_read}+{genre}&startIndex=0&maxResults=1&key={API_KEY}"
+def get_other_book_data(
+    genre, genre_to_read, user_book_names, user_key=None, max_results=200
+):
+    KEY = user_key or API_KEY
+
+    url = f"https://www.googleapis.com/books/v1/volumes?q=subject:{genre_to_read}+{genre}&startIndex=0&maxResults=1&key={KEY}"
     response = requests.get(url)
     time.sleep(1)
 
