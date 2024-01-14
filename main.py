@@ -5,11 +5,10 @@ from api import get_user_book_summaries, get_other_book_data
 
 
 def main():
-    # Read the books.csv file into a DataFrame
     df = pd.read_csv("books.csv")
 
     isbn_list, genre, genre_to_read = get_user_preferences(df)
-    print(f"\nSearching for similarities of {isbn_list} in {genre_to_read} and {genre}\n")
+    print(f"\nSearching for similarities of {isbn_list} in {genre_to_read} and {genre}...\n")
 
     user_summaries, book_names = get_user_book_summaries(isbn_list)
     other_book_data = get_other_book_data(genre, genre_to_read, book_names)
