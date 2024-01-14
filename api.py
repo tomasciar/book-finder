@@ -45,6 +45,8 @@ def get_user_book_summaries(isbn_list):
 def get_other_book_data(genre, genre_to_read, user_book_names, max_results=200):
     url = f"https://www.googleapis.com/books/v1/volumes?q=subject:{genre_to_read}+{genre}&startIndex=0&maxResults=1&key={API_KEY}"
     response = requests.get(url)
+    time.sleep(1)
+
     data = response.json()
     total_items = data.get("totalItems", 0)
     results = max_results // 5
